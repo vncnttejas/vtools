@@ -5,4 +5,4 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ~/data/mongo:/data/db
+      - ~/.vtools/data/mongo:/data/db
