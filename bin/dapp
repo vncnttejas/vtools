@@ -1,0 +1,40 @@
+#! /usr/bin/env python
+def get_manifest_files(name="*", format='yaml'):
+  import glob
+  manifest = "/Users/vvictor002/Dapps/manifests"
+  file_search = '{manifest}/{name}.{format}' \
+    .format(manifest=manifest, name=name, format=format)
+  return glob.glob(file_search)
+
+def get_manifest_apps():
+  files = get_manifest_files()
+  import re
+  apps = []
+  for app in files:
+    matches = re.search('manifests\/(.*)\.yaml$', app)
+    apps.append(matches.group(1))
+  return apps
+
+def execute_cmd(action, manifest_file):
+  if action == 'start':
+    cmd = 'docker-compose -f {0} up -d'.format(manifest_file)
+
+  if action == 'stop':
+    cmd = 'docker-compose -f {0} kill'.format(manifest_file)
+
+  print('Executing command: \n\t {0}'.format(cmd))
+
+  import os
+  os.system(cmd)
+
+def start_command(name):
+  manifest_file = get_manifest_files(name)
+  execute_cmd('start', manifest_file[0])
+
+def stop_command(name):
+  manifest_file = get_manifest_files(name)
+  execute_cmd('stop', manifest_file[0])
+
+if __name__ == '__main__':
+  import scriptine
+  scriptine.run()
