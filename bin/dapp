@@ -3,20 +3,13 @@
 def get_manifest_files(name="*", format='yaml'):
   import glob
   import os
-  cwd = os.getcwd()
-  manifest_dir = cwd + "/manifests"
+  from os.path import expanduser
+
+  inst_dir = expanduser('~') + '/vtools'
+  manifest_dir = inst_dir + "/manifests"
   file_search = '{manifest_dir}/{name}.{format}' \
     .format(manifest_dir=manifest_dir, name=name, format=format)
-  return glob.glob(file_search)
-
-def get_manifest_apps():
-  files = get_manifest_files()
-  import re
-  apps = []
-  for app in files:
-    matches = re.search('manifests\/(.*)\.yaml$', app)
-    apps.append(matches.group(1))
-  return apps
+  return file_search
 
 def execute_cmd(action, manifest_file):
   if action == 'start':
@@ -24,6 +17,9 @@ def execute_cmd(action, manifest_file):
 
   if action == 'stop':
     cmd = 'docker-compose -f {0} kill'.format(manifest_file)
+
+  if action == 'exec':
+    cmd = 'docker-compose -f {0} exec'.format(manifest_file)
 
   print('Executing command: \n\t {0}'.format(cmd))
 
@@ -33,14 +29,14 @@ def execute_cmd(action, manifest_file):
 def start_command(name):
   manifest_file = get_manifest_files(name)
   if (len(manifest_file)):
-    execute_cmd('start', manifest_file[0])
+    execute_cmd('start', manifest_file)
   else:
     print("No such manifest file found")
 
 def stop_command(name):
   manifest_file = get_manifest_files(name)
   if (len(manifest_file)):
-    execute_cmd('stop', manifest_file[0])
+    execute_cmd('stop', manifest_file)
   else:
     print("No such manifest file found")
 
