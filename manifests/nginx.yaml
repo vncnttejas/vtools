@@ -1,0 +1,8 @@
+web:
+  image: nginx
+  volumes:
+    - ~/vtools/config/nginx.conf:/etc/nginx/conf.d/mysite.template
+    - ~/Code/hotelling/services/hotelling-portal-ui/build:/usr/share/nginx/html
+  ports:
+    - "8080:8080"
+  command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
