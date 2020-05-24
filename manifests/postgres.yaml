@@ -5,7 +5,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - ~/.vtools/data/postgres:/var/lib/postgresql/data
+      - ~/vtools/data/postgres:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: 'postgres'
-      POSTGRES_PASSWORD: 'password'
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 5071ccef1f6f739daa12d4e4a2e77473d2eb1c785ec3b768d8d05c81e928e8e8
