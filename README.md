@@ -1,6 +1,6 @@
 # vtools
 
-**vtools** is a Docker based tool for installing applications quickly and not worry about the implementation or installation of these software.
+**vtools** stands for vincent tools is a Docker based tool for installing applications quickly and not worry about the implementation or installation steps of these software.
 
 **vtools** creates an isolated sandbox environment for running your software.
 In this context ***Software*** can be a database or some software service (like minio) which is a dependency for your application to run.
@@ -10,8 +10,22 @@ In this context ***Software*** can be a database or some software service (like 
   - latest version of Docker installed on your machine.
   - Does not require the knowledge of Python or Docker for using it.
 
+# Installation
+  - Install pip if you don't have already have it.
+  - Clone the repo to you root folder
+    ```
+    cd ~
+    git clone https://github.com/vncnttejas/vtools
+    ```
+  - Install `scriptine` with pip with the command
+    `python2 -m pip install scriptine`
+  - Add the bin path to your env variables
+    `vim .profile #this could also be .bashrc or .zshrc`
+    and add the line `alias dapp=$HOME/vtools/bin/dapp` to the end of the file.
+    
+
 # Commands
-`dapp` is the only command the tool provides.
+`dapp` is the only command the tool provides, at the moment, short for "desktop app".
 
 `dapps start mongo`
 will install(if the docker container for mongo is not already available) and start the mongodb service on your machine.
