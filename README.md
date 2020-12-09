@@ -13,17 +13,22 @@ In this context ***Software*** can be a database or some software service (like 
 # Installation
   - Install pip if you don't have already have it.
   - Clone the repo to you root folder
-    ```
+    ```bash
     cd ~
     git clone https://github.com/vncnttejas/vtools
     ```
   - Install `scriptine` with pip with the command
-    ```
+    ```bash
     python2 -m pip install scriptine
     ```
   - Add the bin path to your env variables
-    `vim .profile #this could also be .bashrc or .zshrc`
-    and add the line `alias dapp=$HOME/vtools/bin/dapp` to the end of the file.
+    ```bash
+    vim .profile #this could also be .bashrc or .zshrc
+    ```
+    and add the follwing line line to the end of the file.
+    ```bash
+    alias dapp=$HOME/vtools/bin/dapp
+    ```
     
 
 # Commands
