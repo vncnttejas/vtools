@@ -18,7 +18,9 @@ In this context ***Software*** can be a database or some software service (like 
     git clone https://github.com/vncnttejas/vtools
     ```
   - Install `scriptine` with pip with the command
-    ```python2 -m pip install scriptine```
+    ```
+    python2 -m pip install scriptine
+    ```
   - Add the bin path to your env variables
     `vim .profile #this could also be .bashrc or .zshrc`
     and add the line `alias dapp=$HOME/vtools/bin/dapp` to the end of the file.
